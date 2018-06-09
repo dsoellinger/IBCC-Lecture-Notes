@@ -202,7 +202,7 @@ Think about the camera pinhole model!
 
 In mammography is achieved with ...
 
-- special tubes operating at 25-30eV
+- special tubes operating at 25-30keV
 (attenuation is greater → larger contrast differences in soft-tissue)
 - replace tungsten with molybdenum targets (to get 15-20keV)
 - angle target to achieve small focal-spot size (0.1-0.3mm)
