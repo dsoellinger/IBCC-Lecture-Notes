@@ -35,6 +35,10 @@ In breast imaging we only have soft tissue. But the higher the energy of your X-
 4. Electrons start to travel towards the anode due to the potential difference
 5. Radiation gets produced as soon as the electrons hit the material
 
+**Note:**  
+- The filter is used to get rid of the low energy x-ray photons which are really bad for the human body.  
+- Collimator is used to focus the x-ray beam.
+
 ### How do x-ray photons get generated?
 
 We now understand the basic working principle of the x-ray scanner and how it makes electrons travelling towards the anode. However, no x-ray beams have been generated yet.  
@@ -172,4 +176,36 @@ X-ray photons are captured by film (quantum efficiency)!
 
 <img src="images/radiography/photographic_film.png" width="300"/>
 
-Using fluorescent intensifying screen(s) with phosphor particles converts X-Ray photons into visible light which exposes film. This increases efficiency to ≈ 25%. This is obviously better for patient because we need fewer X-Ray photons and thus less dose.
+Using fluorescent intensifying screen(s) with phosphor particles (inside the screen) converts X-Ray photons into visible light which exposes film. This increases efficiency to ≈ 25%. This is obviously better for patient because we need fewer X-Ray photons and thus less dose.
+
+
+### How to deal with motion artifacts?
+
+It's important to be aware of that fact that, if we ...
+
+- increase the screen thickness, we get a better absorption, but the image quality degrades.
+- use a faster screen, we get higher sensitivity, but increased unsharpness.
+
+As already mentioned the beam width (collimator) has an effect on the sharpness. The close the patient moves towards the point source, the better it is.
+
+Think about the camera pinhole model!
+
+<img src="images/radiography/pinhole_model.png" width="300"/>
+
+
+### Sample X-ray image
+
+<img src="images/radiography/sample_x_ray.png" width="300"/>
+
+
+### Mammography
+
+In mammography is achieved with ...
+
+- special tubes operating at 25-30eV
+(attenuation is greater → larger contrast differences in soft-tissue)
+- replace tungsten with molybdenum targets (to get 15-20keV)
+- angle target to achieve small focal-spot size (0.1-0.3mm)
+- large focal-spot to film distance (45-80cm)
+- compression of the breast (less scatter, more uniform exposure)
+- usually, single-emulsion film + one intensifier screen
