@@ -40,3 +40,25 @@ Hence, we get:
 $-log(\frac{I_{out}}{I_{in}}) = \sum{\mu_{i,j}t}$
 
 **So, the measured x-ray intensity depends on the sum of attenuation coefficients.**
+
+
+**Important:** 
+
+- X-Ray beam is only approximately mono-energetic and attenuation depends on energy
+- Effective X-Ray energy increases as it passed through patient. "Beam hardening"  
+  If the X-Ray beam hits bone, most of the low energy stuff will get absorbed. The high energy stuff remains.
+ 
+### Beam hardening
+
+Beam hardening occurs when the mean energy of an x-ray beam increases as it passes through an object / patient.  
+
+**Note:** Lower energy photons are attenuated more easily, higher energy photons are attenuated less easily
+
+<img src="images/computed_tomography/beam_hardening.png" width="350" />
+  
+
+### Cupping
+
+Cupping means that beams passing through the center are "harded" more than
+
+<img src="images/computed_tomography/cupping.png" width="400" />
