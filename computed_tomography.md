@@ -89,7 +89,65 @@ Cupping means that beams passing through the center are "harded" more than beams
    
 ### How to construct the Hessian Normal Form?
 
+Let's express the following line by the angle $\theta$ and the distance to the normal vector.
+
+<img src="images/computed_tomography/hessian_normal_form.png" width="200" />
+
+Therefore, ...
+
+$cos(\theta) = \frac{l}{m}$ 
+
+$sin(\theta) = \frac{l}{n}$
+
+We also know that: $\frac{x}{m} + \frac{y}{n} = 1$
+
+Hence, we can describe our line as follows: $x \cdot cos(\theta) + y \cdot sin(\theta) = l$
+
+
+### Radon Transform 
+
+We will now see that we can use the Hessian normal form to come up with the backprojection formula.  
+
+Now let's imagine that we have one, very thin x-ray beam that travels through our object until it hits the detector.  
+In the following draw the green line represents the x-ray beam, while the gray line represents the detector. 
+
+<img src="images/computed_tomography/backprojection.png" width="200" />
+
+So, to compute the value of the function $g(I,\theta)$ for a certain I and $\theta$, we compute the line integral. 
+
+$g(I,\theta)=\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(x,y) \cdot \delta(x \cdot cos(\theta) + y \cdot sin(\theta) - I) \cdot dx dy$
+
+$\delta$ ... 1 if point (x,y) is on the line, otherwise 0
+
+In other words, ...
+
+- if we fix l and $\theta$, we compute the line integral of f(x,y)
+- if we fix $\theta$, we compute the projection of f(x,y) at angle $\theta$
+
+$g(\cdot,\cdot)$ is the Radon transform of f(x,y)
+ 
+ 
 ### Backprojection
+
+**Variant 1**
+
+$g(l,\theta)$ is only measured at certain l. This *coarse sampling* results in many points being unassigned.  
+This is bad (we might get grid effects). Therefore, it's common to *apply interpolation*.
+
+Basically this what we did in the example before.
+
+**Variant 2**
+
+For each angle we want to compute, we go through all the sampling points in the image and find the corresponding l.  
+
+$b_\theta = g(x \cdot cos(\theta) + y \cdot sin(\theta), \theta)$
+
+$f_b(x,y) = \frac{1}{\pi} \int_0^\pi b_\theta(x,y) \cdot d_\theta = \frac{1}{\pi} \int_0^\pi g(x \cdot cos(\theta) + y \cdot sin(\theta),\theta) \cdot d_\theta = \frac{1}{\pi} \int_0^\pi [g(l,\theta)]_{l=x \cdot cos(\theta) + y \cdot sin(\theta)} d_\theta$
+
+**Note:** Since $g(l,\theta)$ is only measured at certain l, we need to interpolate
+
+$f_b(x,y)$ is the **backprojection summation** image.
+
 
 ### Hounsfield units (HU)
 
