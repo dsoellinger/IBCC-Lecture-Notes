@@ -44,13 +44,18 @@ $-log(\frac{I_{out}}{I_{in}}) = \sum{\mu_{i,j}t}$
 
 **Important:** 
 
-- X-Ray beam is only approximately mono-energetic and attenuation depends on energy
+- X-Ray beam is only approximately mono-energetic and attenuation depends on energy  
+  **Note:** An x-ray beam consists of many photons. Getting a mono-energetic beam requires all photons to have the same energy level. However, this is not the case in real-world. So, low energy photons will be subject to photoelectric absorption. High energy photons will lose energy and travel further. 
+
 - Effective X-Ray energy increases as it passed through patient. "Beam hardening"  
   If the X-Ray beam hits bone, most of the low energy stuff will get absorbed. The high energy stuff remains.
  
 ### Beam hardening
 
 Beam hardening occurs when the mean energy of an x-ray beam increases as it passes through an object / patient.  
+This is because of the fact that the beam is not mono-energetic. If a low energy photon hits bone, it gets absorbed. The high energy photons travel through. Therefore, the mean energy will obviously increase.
+
+It turns out that beam hardening leads to dark streaks in images.
 
 **Note:** Lower energy photons are attenuated more easily, higher energy photons are attenuated less easily
 
@@ -59,6 +64,67 @@ Beam hardening occurs when the mean energy of an x-ray beam increases as it pass
 
 ### Cupping
 
-Cupping means that beams passing through the center are "harded" more than
+Cupping means that beams passing through the center are "harded" more than beams passing through edges.
 
 <img src="images/computed_tomography/cupping.png" width="400" />
+
+
+### Backprojection (Simple)
+
+**Idea:** Let's distribute the values over the attenuation / pixel map.
+
+<img src="images/computed_tomography/backprojection_simple_algo_1.png" width="210" />
+
+<img src="images/computed_tomography/backprojection_simple_algo_2.png" width="290" />
+
+**Problem:** We get a lot of high values! (can also be seen in the example)
+
+**Countermeasures:**
+
+1. Remove the sum in any of the projections (here: 7)  
+   <img src="images/computed_tomography/backprojection_simple_algo_3.png" width="150" />
+2. Normalize by the highest common factor  
+   <img src="images/computed_tomography/backprojection_simple_algo_4.png" width="140" />
+
+   
+### How to construct the Hessian Normal Form?
+
+### Backprojection
+
+### Hounsfield units (HU)
+
+We know that our sensor measures energy of photons. Since the energy's range of values is usually really large, we typically have problems to visualize the results. Therefore, we want to apply some kind of normalization.
+
+This is done by Hounsfield units which measure the result with respect to something we know (e.g. attenuation of water).
+
+By doing that we can:
+
+- Minimize the dependence on the energy of x-ray beams
+- Produce unit-less values
+
+$HU = 1000 \cdot \frac{\mu - \mu_{H2O}} {\mu_{H2O}}$
+
+**Note:** air = -1000; dense bone = 3000
+
+
+### Noise and artifacts
+
+__**Quantum noise**__
+
+If multiple photons of different energy levels hit the detector, we obtain slightly varying values. This is also called **quantum noise**.
+
+$SNR = \propto \sqrt{N}$  
+N ... number of x-ray quanta/pixel
+
+**Countermeasures:**
+
+- Increase voxel size (reduces resolution)
+- Smoothing during reconstruction
+- Better quantum efficiency of detector
+- "Radiate" longer, but not too long (probably not good for the person ;-)
+
+__**Other effects**__
+
+- Patient motion
+- Beam hardening
+- Calibration issues

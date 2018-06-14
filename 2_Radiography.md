@@ -137,6 +137,8 @@ Dependent on the "type" of atom (tissue) we hit, we get different types of absor
 - Photoelectric absorption: decays cublicy with the amount of energy  
 - Compton scattering: decays linearly with the amount of energy
 
+Therefore, it turns out that for certain types of tissue photoelectric absorption is more important than compton scattering while this might be completely different once we consider other tissue types.
+
 If a high energy beam hits bone (high effective atomic number), the beam will basically travel through and only a small amount of energy gets attenuated due to compton scattering.  
 If a low energy beam hits the bone, most of the energy will be absorbed.
 
