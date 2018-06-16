@@ -184,3 +184,17 @@ $\begin{pmatrix} M_x(t) \\ M_y(t) \\ M_z(t)\end{pmatrix} = \begin{pmatrix} m_0 
 with $w_0$ = $V_L$ being the Larmor frequency and $M(0)$ = $m_0$ (initial magnetization).
 
 **Note:** We want $B_0$ to be very large since this leads to greater magnetization which results in a longer vector and therefore it takes more time until we reach the equilibrium state.
+
+### Spin-Echo Sequence
+
+With the things we've learned we can already measure $T_2$ directly. However, there are techniques to achive better results. One is called the Spin-Echo sequence.
+
+We first start with a 90 degree pulse and once we turn it of we measure a little bit of **free induction decay** signal ($T_2$). $M_1$ is tilted in the x,y-plane and rotates there. Now relaxation happens which means that the vectors start to dephase again. Some rotate faster, some rotate slower. Thermal effects cause the vector to move back to equilibrium state.  
+After a certain time we send a 180 degree pulse. Therefore, the "vector" flips in the other direction. Due to the 180 degree pulse they start to move together again. They will arrive at the same time. The fastest one before is now the last, but it moves faster.  
+If we do this a couple of times, we get a good sampling of how the vector goes back.
+
+<img src="images/mri/spin_echo_sequence.png" width="550" />
+
+<img src="images/mri/turtle_race.png" width="350" />
+
+<img src="images/mri/spin_echo_sequence_decay.png" width="550" />
