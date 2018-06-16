@@ -63,6 +63,8 @@ Since the magnetic field rotates at the Larmor frequency we get resonance (nucle
 If we now turn $B_1$ off, the particles will rotate back to the equilibrium state.  
 This movement can be seen as an upward spiral. While it moves back also the vector will become shorter.
 
+<img style="float: right; margin-right: -190px; margin-left: 20px; margin-top: 50px;" src="images/mri/orientations.png" width="350" />
+
 We can now consider the following two times:
 
 - $T_1$  
@@ -96,5 +98,89 @@ However,
 Spin typically comes in multiples of 1/2 and can be positive or negative. For example, $H_1$ has a spin of 1/2.  
 This because of the fact that, for instance, protons consist of three quarks (2x up-quark, 1x down-quark). The spins of each quark sum of to 1/2.
 
+Particles with a spin of q=1/2 have **(2q+1)** energy sublevels.
 
 
+### Maths behind MRI
+
+If we turn on our external magnetic field, the energy of the nucleus is  
+$E = -<\mu,B_0>$  where $\mu$ is the magnetic moment.
+
+Since Hydrogen $H_1$ has two different energy levels, the question that arises is what is the difference between these two energy levels.
+
+In general, for the z component of $\mu$ we have  
+$\mu_z = \gamma \cdot m \cdot h$  
+where $\gamma$ is the gyromagnetic ratio, m is the magnetic quantum number and h the Planck constant.
+
+By convention, we consider an external magnetic field $B_0$, aligned with the z-direction.  
+Therefore, we get for the energy: $E_m = - \mu_z \cdot B_0 = - \gamma \cdot m \cdot B_0 \cdot h$
+
+For example, for $H_1$, i.e., m=1/2:
+
+$E_{+1/2} = - \gamma \cdot 1/2 \cdot B_0 \cdot h$  
+$E_{-1/2} = + \gamma \cdot 1/2 \cdot B_0 \cdot h$
+
+Consequently,  
+
+$\Delta E = \gamma \cdot h \cdot B_0$, or
+
+$\Delta E = \gamma \cdot h \cdot B_0 = h \cdot \frac{\gamma}{2 \pi} \cdot B_0 = h \cdot v_L$
+
+$v_L$ is referred as the Larmor frequency.
+
+So, in order to overcome this energy difference, we need to "bring in" exactly the same amount of energy. Then the energy levels will change.
+
+
+**Time derivatives of the net magnetization**
+
+$\frac{d}{dt}M = \frac{d}{dt}\sum_i{\mu_i} = \sum_i{\frac{\mu_i}{dt}} = \sum_i{\gamma(\mu_i \text{ x } B)} = \gamma ( M \text{ x } B )$
+
+$M_0$ is also called the net magnetization.
+
+By splitting it up into individual compontents (cross product) we get:
+
+$\frac{d}{dt}M_x = \gamma(M_y \cdot B_z - M_z \cdot B_y)$  
+$\frac{d}{dt}M_y = \gamma(M_z \cdot B_x - M_x \cdot B_z)$  
+$\frac{d}{dt}M_z = \gamma(M_x \cdot B_y - M_y \cdot B_x)$
+
+However, this is not fully true since our spins are NOT independent from each other. This is not the case (due to thermal effects, etc.) and we need to take care of this effects somehow.
+
+A useful set of equations is called the **Bloch equations** which help us to cope with the problem. For example, this equations take into account interdependencies between spins, etc.
+
+**Derive the final motion equation**
+
+Now, let's assume that $B_0 = \begin{pmatrix} 0 \\ 0 \\ B_0 \end{pmatrix}$.
+
+Therefore, we get for the time-derivative of the net magnetization:
+
+$\frac{d}{dt} M(t) = \begin{pmatrix} \gamma \cdot B_0 \cdot M_y \\ -\gamma \cdot B_0 \cdot M_x \\ 0 \end{pmatrix}$
+
+To solve this we can make use of the fact that we only have motion in x and y. There is no motion in z direction.
+
+Hence, we can say:
+
+$M_{x,y} = M_x + i \cdot M_y$
+
+$B_{x,y} = B_x + i \cdot B_y$
+
+Therefore, ...
+
+$\frac{d}{dt} M_{x,y} = \frac{d}{dt} M_x + i \frac{d}{dt} M_y$  
+$\frac{d}{dt} M_{x,y} = \gamma B_0 M_y - i \gamma B_0 M_x$  
+$\frac{d}{dt} M_{x,y} = -i \gamma B_0 (M_x - i \cdot M_y)$  
+$\frac{d}{dt} M_{x,y} = -i \gamma B_0 M_{x,y}$  
+$\frac{d}{dt} M_{x,y} = -i w_0 M_{x,y}$
+
+Let's say that $M_{x,y}(0)$ = $m_0$ (initial magnetization).
+
+Hence, we get:  
+
+$M_{x,y}(t) = M_{x,y}(0) \cdot e^{-i w_0 t} = m_0 (cos(w_0 t) - i \cdot sin(w_0 t))$
+
+Therefore, we finally get ...
+
+$\begin{pmatrix} M_x(t) \\ M_y(t) \\ M_z(t)\end{pmatrix} = \begin{pmatrix} m_0 \cdot cos(w_0 t) \\ m_0 \cdot sin(w_0 t) \\ 0\end{pmatrix}$
+
+with $w_0$ = $V_L$ being the Larmor frequency and $M(0)$ = $m_0$ (initial magnetization).
+
+**Note:** We want $B_0$ to be very large since this leads to greater magnetization which results in a longer vector and therefore it takes more time until we reach the equilibrium state.
