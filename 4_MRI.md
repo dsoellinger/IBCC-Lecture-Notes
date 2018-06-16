@@ -9,11 +9,11 @@ Every atom possesses:
 - Magnetism
 - Spin
 
-We will know investigate what happens to the hydrogen ($H_1$) atom, which is abundant since the body is mostly made up of water and fat. An hydrogen atom is electrically neutral since it possesses one electron + one proton + no neutron.
+We will know investigate what happens to the hydrogen ($^1 H$) atom, which is abundant since the body is mostly made up of water and fat. An hydrogen atom is electrically neutral since it possesses one electron + one proton + no neutron.
 
 <img style="float: right; margin-left: 20px; margin-right: 20px;" src="images/mri/spin.png" width="140" />
 
-In MRI we use a magnet to change the magnetic properties of $H_1$ and try to excite it. This means that we turn on a magnetic field and "things" tend to align with the magnetic field. Once we turn of the impuls, "things" go back into equilibrium state. The time required to go back into equilibrium state is what we measure.
+In MRI we use a magnet to change the magnetic properties of $^1 H$ and try to excite it. This means that we turn on a magnetic field and "things" tend to align with the magnetic field. Once we turn of the impuls, "things" go back into equilibrium state. The time required to go back into equilibrium state is what we measure.
 
 Spin is nothing we can measure directly. Also it's not visible on a microscopic level.  
 However, we still know that it is there due to empirical evidence.  
@@ -95,7 +95,7 @@ However,
  
 ### How to measure spin
 
-Spin typically comes in multiples of 1/2 and can be positive or negative. For example, $H_1$ has a spin of 1/2.  
+Spin typically comes in multiples of 1/2 and can be positive or negative. For example, $^1 H$ has a spin of 1/2.  
 This because of the fact that, for instance, protons consist of three quarks (2x up-quark, 1x down-quark). The spins of each quark sum of to 1/2.
 
 Particles with a spin of q=1/2 have **(2q+1)** energy sublevels.
@@ -106,7 +106,7 @@ Particles with a spin of q=1/2 have **(2q+1)** energy sublevels.
 If we turn on our external magnetic field, the energy of the nucleus is  
 $E = -<\mu,B_0>$  where $\mu$ is the magnetic moment.
 
-Since Hydrogen $H_1$ has two different energy levels, the question that arises is what is the difference between these two energy levels.
+Since Hydrogen $^1 H$ has two different energy levels, the question that arises is what is the difference between these two energy levels.
 
 In general, for the z component of $\mu$ we have  
 $\mu_z = \gamma \cdot m \cdot h$  
@@ -115,7 +115,7 @@ where $\gamma$ is the gyromagnetic ratio, m is the magnetic quantum number and h
 By convention, we consider an external magnetic field $B_0$, aligned with the z-direction.  
 Therefore, we get for the energy: $E_m = - \mu_z \cdot B_0 = - \gamma \cdot m \cdot B_0 \cdot h$
 
-For example, for $H_1$, i.e., m=1/2:
+For example, for $^1 H$, i.e., m=1/2:
 
 $E_{+1/2} = - \gamma \cdot 1/2 \cdot B_0 \cdot h$  
 $E_{-1/2} = + \gamma \cdot 1/2 \cdot B_0 \cdot h$
@@ -198,3 +198,47 @@ If we do this a couple of times, we get a good sampling of how the vector goes b
 <img src="images/mri/turtle_race.png" width="350" />
 
 <img src="images/mri/spin_echo_sequence_decay.png" width="550" />
+
+### Inversion-Recovery Sequence
+
+$T_1$ cannot be measured directly. However, we can come up with another sequence to measure $T_1$.
+
+<img src="images/mri/inversion_recovery_sequence.png" width="500" />
+
+
+### Measure the location of the signal
+
+So far, we don't know how to measure the exact position of the signal. We do not have spatial resolution can not assign values to voxels.
+
+The solution to this problem are (linear) **gradient fields**.
+
+We can use the fact that the precession depends on the gyromagnetic ratio and the $B_0$ field.  
+So, if we changed the $B_0$ field based on the position of the x/y/z-axis, we could use the different magnetizations to determine the position since the Larmor frequency is different for each position.  
+However, since this is time-consuming we typically do this in the z-direction only. Therefore, we get slices of a certain thickness.
+
+$B_{Grad} = B_0 + zG_z = \begin{pmatrix} 0 \\ 0 \\ B_0 + zG_z\end{pmatrix}$
+
+Consequently, the Larmor frequency depends on the position of the nuclei on the z-axis:
+
+$w(z) = \gamma (B_0 + z G_z)$
+
+Since the 90-degree pulse is not perfect and has a certain bandwidth $\Delta, we get resonance in only a certain slice of thickness.
+
+$\Delta z = \frac{\Delta w - \gamma B_0}{\gamma G_z}$
+
+This is called **slice-selective excitation**.
+
+<img src="images/mri/slice_selective_excitation.png" width="450" />
+
+Next we turn off the linear z-gradient field and $B_1$ and turn on a gradient field xy.
+
+$G_{xy} = \begin{pmatrix} G_x \\ G_y \\ 0 \end{pmatrix}$
+
+This field remains on during measurement.
+
+<img src="images/mri/sample_images.png" width="450" />
+
+
+
+ 
+
