@@ -157,7 +157,7 @@ $p^n+1 = p^n - H^{-1} \cdot g$
 As we can see to perform a Newton update step we basically need the Hessian and the gradients of the cost function.  
 So, first, let's compute the gradient of our SSD loss function.
 
-$g_j = \frac{d J(p)}{d p_j} = \frac{d J(p)}{d p_j} \sum_{i=1}^m r_i^2 = 2 \cdot \sum_{i=1}^m r_i \cdot \frac{d r_i}{d p_j} = 2 \cdot J^T \cdot r$
+$g_j = \frac{d J(p)}{d p_j} = \frac{d J(p)}{d p_j} \sum_{i=1}^m r_i^2 = 2 \cdot \sum_{i=1}^m r_i \cdot \frac{d r_i}{d p_j}$
 
 Next, we compute the Hessian $H_{jk}$ (we need to take the derivate of $g_j$ since the Hessian consists of 2nd-order derivatives).
 
@@ -196,7 +196,7 @@ $J_{ik} = \begin{pmatrix}
 				\frac{d r_m}{d p_1} & \frac{d r_m}{d p_2} & ... & \frac{d r_m}{d p_k}
 			\end{pmatrix}$
 
-$J_{ij}^T \cdot J_{ik} = \begin{pmatrix} 
+$H_{jk} = 2 \cdot J_{ij}^T \cdot J_{ik} = 2 \cdot \begin{pmatrix} 
 \frac{d r_1}{d p_1} \frac{d r_1}{d p_1} + \frac{d r_2}{d p_1} \frac{d r_2}{d p_1} + \frac{d r_3}{d p_1} \frac{d r_3}{d p_1} + ... + \frac{d r_m}{d p_1} \frac{d r_m}{d p_1} & 
 \frac{d r_1}{d p_1} \frac{d r_1}{d p_2} + \frac{d r_2}{d p_1} \frac{d r_2}{d p_2} + \frac{d r_3}{d p_1} \frac{d r_3}{d p_2} + ... + \frac{d r_m}{d p_1} \frac{d r_m}{d p_2} &
 ...
@@ -231,8 +231,20 @@ $J_j^T = \begin{pmatrix}
 		\end{pmatrix}$
 
 
-$J_j^T \cdot r_i = 
+$g_j = 2 \cdot J_j^T \cdot r_i = 2 \cdot
 		\begin{pmatrix}
 			r_1 \frac{d r_1}{d p_1} + r_2 \frac{d r_2}{d p_1} + ... + r_m \frac{d r_m}{d p_1} \\
-			r_1 \frac{d r_1}{d p_1} + r_2 \frac{d r_2}{d p_1} + ... + r_m \frac{d r_m}{d p_1}
+			r_1 \frac{d r_1}{d p_2} + r_2 \frac{d r_2}{d p_2} + ... + r_m \frac{d r_m}{d p_2} \\
+			... \\
+			r_m \frac{d r_1}{d p_j} + r_2 \frac{d r_2}{d p_j} + ... + r_m \frac{d r_m}{d p_j}
 		\end{pmatrix}$
+
+
+Therefore, we can now write:
+
+$H_{jk}^{-1} \cdot g = (2 \cdot J_{ij}^T \cdot J_{ik})^{-1} \cdot 2 \cdot J_j^T \cdot r_i$.
+
+Since $J_{ij}$ is the same as $J_j$ we finally get for the update rule:
+
+$p^n+1 = p^n - (J^T \cdot J)^{-1} \cdot J^T \cdot r_i$
+
