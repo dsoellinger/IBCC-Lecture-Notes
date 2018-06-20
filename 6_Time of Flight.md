@@ -63,3 +63,52 @@ So, at the end what we do is an amplitude modulation.
 
 <img src="images/time_of_flight/cont_wave_modulation_example.png" width="430px" />
 
+Let's introduce it by means of an example:
+
+Let's say we send out a signal (emitted signal) and after a while the signal comes back (received signal). If we plot the signal, we would get something as follows:
+
+<img src="images/time_of_flight/phase_shift.png" width="500px" />
+
+We now not only observe that the phase changed, we also observe that there is an additional bias B due to ambient light and that the amplitude A became less.
+
+Therefore, we can model our two signals as follows:
+
+$s(t) = a \cdot cos(2 \pi ft)$
+
+$r(t) = A \cdot cos(2 \pi f (t - \tau)) + B$
+
+We can now compare both signals using cross-correlation.
+
+$C(x) = \int_{-\infty}^{\infty} s(x) \cdot r(x+\tau) dt$
+
+If we solve it using Fourier transform, we finally get:
+
+$C(x) = \frac{aA}{2} \cdot cos(2 \pi f \tau + 2 \pi fx) + B = \frac{aA}{2} \cdot cos(\phi + 2 \pi fx) + B$
+
+So, let's again summarize what parameters we know from our equation. Since we can choose an position from our signal we know x. So, the only thing we don't know is $\phi$, A and B. So, if we came up with at least three equations, we could set up an equation system and solve it.
+
+To do that we look at the signal at equally spaced intervals. This algorithm is also called the **4-bucket-algorithm**.
+
+For example:
+
+$2 \pi f x_0 = 0^\circ$  
+$2 \pi f x_1 = 90^\circ$  
+$2 \pi f x_2 = 180^\circ$  
+$2 \pi f x_3 = 270^\circ$
+
+We can then derive the following solutions to the problem:
+
+<img src="images/time_of_flight/phase_shift_solution.png" width="300px" />
+
+Finally, we can compute the distance:
+
+$d = \frac{1}{2} \tau c = \frac{1}{2} c \frac{\phi}{2 \pi f} = \frac{c}{2f} \frac{\phi}{2 \pi}$
+
+**Problems with this approach**
+
+Once $\phi$ becomes larger then $2 \pi$ we run into problems since we won't be able to differentiate between certain distances. This **ambiquity** is also called **phase wrapping**.
+
+
+### Detecting the signal
+
+
