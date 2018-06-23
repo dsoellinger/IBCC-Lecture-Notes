@@ -129,3 +129,5 @@ A pixel value gets encoded by pixel in its neighbourhood.
 ### Pixel matching
 
 Ideally, for each pixel $p_c^j$ and each pixel $p_A^i$ in the same row, we obtain a unique **coveriance peak** for an actual couple of conjugate points. The remaining values would be zero (if there was no noise :). Once we know the position in every image, we know the disparity and can calculate the depth map.
+
+**Note:** To find the covarince peak we take one row, slide it across the row of the other image  and compute the cross-correlation.
