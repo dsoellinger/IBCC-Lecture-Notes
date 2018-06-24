@@ -9,7 +9,7 @@ Topics covered in this lecture:
 - Structured Light
 - LIDAR
 
-So, this lecture is about imaging modalities __beyond typical "consumer electronics"__.
+In other words, this lecture is about imaging modalities __beyond typical "consumer electronics"__.
 
 ### Imaging Modalities
 
@@ -17,7 +17,7 @@ So, this lecture is about imaging modalities __beyond typical "consumer electron
 
 <img src="images/preliminaries/mri_example.png" width="300"/>
 
-__Note:__ Phyical environment (temperature, scanner parameters, etc.) has a huge impact on the captures image. Which means that an image of the same person might look different captures a second time.
+__Note:__ Physical environment (temperature, scanner parameters, etc.) has a huge impact on the captured image. This might result in totally different images of the same person.
 
 **Computer Tomography**
 
@@ -26,7 +26,7 @@ __Note:__ Phyical environment (temperature, scanner parameters, etc.) has a huge
 __Note:__ Captured by "rotating X-Ray".
 
 **Problem with CT:**  
-Ionizing ("ionisierend") radiation is typical used for more "bone-like" structures. Means it's hard to differentiate between many different tissue types. MRT is always us to better differentiate between different tissue types.
+Ionizing ("ionisierend") radiation is typical used for "bone-like" structures. It's hard to differentiate between many different tissue types. MRT performs much better in these types of scenarios.
 
 **Ultrasound**
 
@@ -44,13 +44,13 @@ We get two different types of information:
 ### Intensity values
 
 Intensity values are related to physical tissue characteristics.  
-So the actual value of an image has more meaning that in standard imaging.
+So, we can say that the actual voxel value in medical imaging has more meaning that in standard imaging.
 
 ### Anatomical Orientations
 
 <img src="images/preliminaries/orientation_definition.png" width="400"/>
 
-Orientations are typically encoded in a three letter code. We need to be really careful since different images can have totally diferent letter codes!
+Orientations are typically encoded in a three letter code. We need to be really careful since different images often have totally different letter codes!
 
 **The code always describes to positive direction of each axis!**  
 
@@ -67,11 +67,11 @@ S: z-axis from interior to superior
 
 We have multiple coordinate systems:
 
-- **World:** How the patient was "laying" within the scanner.
+- **World:** How the patient was "lying" within the scanner.
 - **Anotomical:** Coordinate system with respect to the planes
 - **Image:** Coordinate system of the image
 
-**Note:** In some cases we have to go back from the image coordinate system to the world coordinate system. For instance, we have a robot which operates a patient. Brain surgery
+**Note:** In some cases we have to go back from the image coordinate system to the world coordinate system. For instance, if we have a robot which operates a patient (e.g. rain surgery)
 
 **Image Origin**  
 Position of the first voxel in the anatomic coordinate space.
@@ -85,11 +85,10 @@ spacing = [1mm, 1mm, 0.9mm]
 
 <img src="images/preliminaries/spacing_example.png" width="100"/>
 
-**Note:** If want to see a lot of details (very small structures), I need a fine spacing, otherwise I'm not able to capture all the details.
+**Note:** If want to see a lot of details (very small structures), we need a fine spacing. Otherwise we are not able to capture all the details.
 
 
 ### What's a imaging phantom?
-An imaging phantom for determining CT performance
 Imaging phantom, or simply phantom, is a specially designed object that is scanned or imaged in the field of medical imaging to evaluate, analyze, and tune the performance of various imaging devices. For example, we can use a phantom to calibrate your device.
 
 
