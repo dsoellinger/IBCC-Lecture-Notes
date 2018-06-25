@@ -25,15 +25,15 @@ To understand the backprojection algorithm we need to think about what happens t
 
 The remaining intensity of the x-ray beam once it leaves a certain cell can be computed as follows:
 
-$I_{cell,out} = I_{cell,in} \cdot e^{\mu_{cell} \cdot t}$
+$I_{cell,out} = I_{cell,in} \cdot e^{- \mu_{cell} \cdot t}$
 
 So, the intensity once it leaves the human body can be computed as follows:
 
-$I_{out} = I_{cell_{n},in} \cdot e^{\mu_{cell_{n}} t}$  
-$I_{out} = I_{cell_{n-1},in} \cdot e^{\mu_{cell_{n-1}} t} \cdot e^{\mu_{cell_{n}} t}$  
-$I_{out} = I_{cell_{n-2},in} \cdot e^{\mu_{cell_{n-2}} t} \cdot e^{\mu_{cell_{n-1}} t} \cdot e^{\mu_{cell_{n}} t}$  
+$I_{out} = I_{cell_{n},in} \cdot e^{- \mu_{cell_{n}} t}$  
+$I_{out} = I_{cell_{n-1},in} \cdot e^{- \mu_{cell_{n-1}} t} \cdot e^{- \mu_{cell_{n}} t}$  
+$I_{out} = I_{cell_{n-2},in} \cdot e^{- \mu_{cell_{n-2}} t} \cdot e^{- \mu_{cell_{n-1}} t} \cdot e^{- \mu_{cell_{n}} t}$  
 ...  
-$I_{out} = I_{in} \cdot e^{\sum {\mu_{i,j}t}}$
+$I_{out} = I_{in} \cdot e^{- \sum {\mu_{i,j}t}}$
 
 Hence, we get:  
 $-log(\frac{I_{out}}{I_{in}}) = \sum{\mu_{i,j}t}$
@@ -88,15 +88,13 @@ Cupping means that beams passing through the center are "harded" more than beams
    
 ### How to construct the Hessian Normal Form?
 
-Let's express the following line by the angle $\theta$ and the distance to the normal vector.
+<img style="float: right; margin-top: -20px; margin-right: 20px;" src="images/computed_tomography/hessian_normal_form.png" width="200" />
 
-<img src="images/computed_tomography/hessian_normal_form.png" width="200" />
+Let's express the following line by the angle $\theta$ and the distance to the normal vector.
 
 Therefore, ...
 
-$cos(\theta) = \frac{l}{m}$ 
-
-$sin(\theta) = \frac{l}{n}$
+$cos(\theta) = \frac{l}{m} \hspace{2cm} sin(\theta) = \frac{l}{n}$
 
 We also know that: $\frac{x}{m} + \frac{y}{n} = 1$
 
@@ -105,18 +103,21 @@ Hence, we can describe our line as follows: $x \cdot cos(\theta) + y \cdot sin(\
 
 ### Radon Transform 
 
+<img style="float: right; margin-right: 20px; margin-left: 20px;" src="images/computed_tomography/backprojection.png" width="200" />
+
 We will now see that we can use the Hessian normal form to come up with the backprojection formula.  
 
-Now let's imagine that we have one, very thin x-ray beam that travels through our object until it hits the detector.  
-In the following draw the green line represents the x-ray beam, while the gray line represents the detector. 
-
-<img src="images/computed_tomography/backprojection.png" width="200" />
+Now, let's imagine that we have one, very thin x-ray beam that travels through our object until it hits the detector.  
+In the following drawing the green line represents the x-ray beam, while the gray line represents the detector. 
 
 So, to compute the value of the function $g(I,\theta)$ for a certain I and $\theta$, we compute the line integral. 
 
-$g(I,\theta)=\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(x,y) \cdot \delta(x \cdot cos(\theta) + y \cdot sin(\theta) - I) \cdot dx dy$
+$\delta(x,y) = \begin{cases}
+    					1 & \text{if point (x,y) is on the line}\\
+    	             0 & \text{otherwise}
+					\end{cases}$
 
-$\delta$ ... 1 if point (x,y) is on the line, otherwise 0
+$g(I,\theta)=\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(x,y) \cdot \delta(x \cdot cos(\theta) + y \cdot sin(\theta) - I) \cdot dx dy$
 
 In other words, ...
 
@@ -133,7 +134,7 @@ $g(\cdot,\cdot)$ is the Radon transform of f(x,y)
 $g(l,\theta)$ is only measured at certain l. This *coarse sampling* results in many points being unassigned.  
 This is bad (we might get grid effects). Therefore, it's common to *apply interpolation*.
 
-Basically this what we did in the example before.
+Basically this is what we did in the example before.
 
 **Variant 2**
 
