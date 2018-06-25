@@ -2,12 +2,11 @@
 
 ### What's is CT?
 
-We could say that CT is simply rotating x-ray around the human body.
+<img style="float: right; margin-right: 40px; margin-left: 20px;" src="images/computed_tomography/working_principle.png" width="200" />
 
-Imagine that we have a human body and a x-ray source to rotates around the human body. The detector captures the remaining x-ray beams once they travelled through the body. We now try to compute the backprojection. Since the scanner (source, detector) rotates and the person moves through the scanner we get many slices. This slices can then be used to reconstruct the person.
+We can say that CT is simply "rotating x-ray around the human body".
 
-<img src="images/computed_tomography/working_principle.png" width="280" />
-
+Imagine that we have a human body and a x-ray source that rotates around the human body. The detector captures the remaining x-ray beams once they travelled through the body. We now try to compute the backprojection. Since the scanner (source, detector) rotates and the person moves through the scanner we obtain many slices. This slices can then be used to reconstruct the person.
 
 ### Idea of backprojection
 
@@ -15,12 +14,12 @@ Let's assume that the scanner rotates around the patient and while it rotates we
 
 <img src="images/computed_tomography/backprojection_multiple_scans.png" width="200" />
 
-The angle and the sampling interval determine the resolution of our reconstructed image. The slice thickness is determined by the collimator opening.
+The angle and the sampling interval determines the resolution of our reconstructed image. The slice thickness is determined by the collimator opening.
 
 However, how can we now create a 3D reconstruction out of multiple 2D images?  
 We can used the **backprojection algorithm.**
 
-To understand the backprojection algorith we need to think about what happens to the x-ray beam when it travels through the body.
+To understand the backprojection algorithm we need to think about what happens to the x-ray beam when it travels through the body.
 
 <img src="images/computed_tomography/backprojection_computation.png" width="300" />
 
@@ -44,11 +43,11 @@ $-log(\frac{I_{out}}{I_{in}}) = \sum{\mu_{i,j}t}$
 
 **Important:** 
 
-- X-Ray beam is only approximately mono-energetic and attenuation depends on energy  
+- X-Ray beams are only approximately mono-energetic and attenuation depends on energy  
   **Note:** An x-ray beam consists of many photons. Getting a mono-energetic beam requires all photons to have the same energy level. However, this is not the case in real-world. So, low energy photons will be subject to photoelectric absorption. High energy photons will lose energy and travel further. 
 
-- Effective X-Ray energy increases as it passed through patient. "Beam hardening"  
-  If the X-Ray beam hits bone, most of the low energy stuff will get absorbed. The high energy stuff remains.
+- Effective x-ray energy increases as it passed through patient. "Beam hardening"  
+  If the x-ray beam hits bone, most of the low energy stuff will get absorbed. The high energy stuff remains.
  
 ### Beam hardening
 

@@ -17,7 +17,7 @@ In other words, this lecture is about imaging modalities __beyond typical "consu
 
 <img src="images/preliminaries/mri_example.png" width="300"/>
 
-__Note:__ Physical environment (temperature, scanner parameters, etc.) has a huge impact on the captured image. This might result in totally different images of the same person.
+__Note:__ The physical environment (temperature, scanner parameters, etc.) has a huge impact on the resulting image. Therefore, it can easily happen that images of the same patient captured over a certain period of time look different.
 
 **Computer Tomography**
 
@@ -44,7 +44,7 @@ We get two different types of information:
 ### Intensity values
 
 Intensity values are related to physical tissue characteristics.  
-So, we can say that the actual voxel value in medical imaging has more meaning that in standard imaging.
+In this sense, we could also say that say that the voxel value in medical imaging has more meaning than in standard imaging.
 
 ### Anatomical Orientations
 
@@ -52,7 +52,7 @@ So, we can say that the actual voxel value in medical imaging has more meaning t
 
 Orientations are typically encoded in a three letter code. We need to be really careful since different images often have totally different letter codes!
 
-**The code always describes to positive direction of each axis!**  
+**The code always describes the positive axis' direction!**  
 
 **Example: RAS**  
 R: x-axis from left to right  
