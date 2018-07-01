@@ -2,10 +2,10 @@
 
 ### Goal
 
-Let' say that we have to images (e.g. images of a human brain).  
+Let' say that we have two images (e.g. images of a human brain).  
 We now want to find a transformation T that maps image A to image B.
 
-For instance, this comes in handy if we have an annotated brain ATLAS and a set of new images which are not annotated. By finding the right transformation we can easily annotated the new images.
+For instance, let's assume that we have an annotated brain ATLAS and a set of new images which are not annotated. By finding the right transformation we can easily annotate the new images.
 
 **Note:** An ATLAS is typically not constructed from a single patient only. Instead images of multiple patients of a certain age group get averaged.
 
@@ -15,7 +15,7 @@ For instance, this comes in handy if we have an annotated brain ATLAS and a set 
 <img style="float: right; margin-right: 40px; margin-top: 10px;" src="images/image_registration/rotation_translation_reflection.png" width="150"/>
 
 A rigid transform is a geometric transformation that **preserves distances**.  
-It includes **rotations, translations, reflections**.
+It includes **rotations, translations** and **reflections**.
 
 $x' = Rx + t$
 
