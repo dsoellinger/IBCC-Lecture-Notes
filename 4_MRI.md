@@ -9,11 +9,11 @@ Every atom possesses:
 - Magnetism
 - Spin
 
-We will know investigate what happens to the hydrogen ($^1 H$) atom, which is abundant since the body is mostly made up of water and fat. An hydrogen atom is electrically neutral since it possesses one electron + one proton + no neutron.
+We will now investigate what happens to the hydrogen ($^1 H$) atom which is abundant since the body is mostly made up of water and fat. An hydrogen atom is electrically neutral since it possesses one electron + one proton + no neutron.
 
 <img style="float: right; margin-left: 20px; margin-right: 20px;" src="images/mri/spin.png" width="140" />
 
-In MRI we use a magnet to change the magnetic properties of $^1 H$ and try to excite it. This means that we turn on a magnetic field and "things" tend to align with the magnetic field. Once we turn of the impuls, "things" go back into equilibrium state. The time required to go back into equilibrium state is what we measure.
+In MRI we use a magnet to change the magnetic properties of $^1 H$ and try to excite it. This means that we turn on a magnetic field and "things" tend to align with the magnetic field. Once we turn off the impuls, "things" go back into equilibrium state. The time required to go back into equilibrium state is what we measure.
 
 Spin is nothing we can measure directly. Also it's not visible on a microscopic level.  
 However, we still know that it is there due to empirical evidence.  
@@ -187,9 +187,9 @@ with $w_0$ = $V_L$ being the Larmor frequency and $M(0)$ = $m_0$ (initial magnet
 
 ### Spin-Echo Sequence
 
-With the things we've learned we can already measure $T_2$ directly. However, there are techniques to achive better results. One is called the Spin-Echo sequence.
+With the things we've learned we can already measure $T_2$ directly. However, there are techniques to achive better results. One is called the spin-echo sequence.
 
-We first start with a 90 degree pulse and once we turn it of we measure a little bit of **free induction decay** signal ($T_2$). $M_1$ is tilted in the x,y-plane and rotates there. Now relaxation happens which means that the vectors start to dephase again. Some rotate faster, some rotate slower. Thermal effects cause the vector to move back to equilibrium state.  
+We first start with a 90 degree pulse and once we turn it off we measure a little bit of **free induction decay** signal ($T_2$). $M_1$ is tilted in the x,y-plane and rotates there. Now relaxation happens which means that the vectors start to dephase again. Some rotate faster, some rotate slower. Thermal effects cause the vector to move back to equilibrium state.  
 After a certain time we send a 180 degree pulse. Therefore, the "vector" flips in the other direction. Due to the 180 degree pulse they start to move together again. They will arrive at the same time. The fastest one before is now the last, but it moves faster.  
 If we do this a couple of times, we get a good sampling of how the vector goes back.
 
@@ -208,7 +208,7 @@ $T_1$ cannot be measured directly. However, we can come up with another sequence
 
 ### Measure the location of the signal
 
-So far, we don't know how to measure the exact position of the signal. We do not have spatial resolution can not assign values to voxels.
+So far, we don't know how to measure the exact position of the signal. We do not have spatial information and can not assign values to voxels.
 
 The solution to this problem are (linear) **gradient fields**.
 
@@ -222,7 +222,7 @@ Consequently, the Larmor frequency depends on the position of the nuclei on the 
 
 $w(z) = \gamma (B_0 + z G_z)$
 
-Since the 90-degree pulse is not perfect and has a certain bandwidth $\Delta, we get resonance in only a certain slice of thickness.
+Since the 90-degree pulse is not perfect and has a certain bandwidth $\Delta$, we get resonance in only a certain slice of thickness.
 
 $\Delta z = \frac{\Delta w - \gamma B_0}{\gamma G_z}$
 
@@ -230,7 +230,7 @@ This is called **slice-selective excitation**.
 
 <img src="images/mri/slice_selective_excitation.png" width="450" />
 
-Next we turn off the linear z-gradient field and $B_1$ and turn on a gradient field xy.
+Next, we turn off the linear z-gradient field and $B_1$ and turn on a gradient field xy.
 
 $G_{xy} = \begin{pmatrix} G_x \\ G_y \\ 0 \end{pmatrix}$
 
