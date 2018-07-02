@@ -19,12 +19,12 @@ We mainly differentiate between two different classes of sensors:
 
 We can roughly differentiate between two different types of sensors:
 
-- **Point-weise ToF sensors**  
+- **Point-wise ToF sensors**  
   Get mounted on a two-dimensional pan-tilt scanning mechanism. Also referred as LIDAR (Light Detection and Ranging). Measures the scene point-wise.
 - **Matricial ToF sensors**  
   Estimate depth in a "single shot" using a matrix of ToF sensors. In practice, CMOS or CCD image sensors coupled with a lens system are used.
 
-        Matricial ToF      |      Point-wise ToF
+        Point-wise ToF      |      Matricial ToF
 :-------------------------:|:-------------------------:
 <img src="images/time_of_flight/velodyne.png" /> | <img src="images/time_of_flight/swiss_ranger.png" />
 
@@ -113,7 +113,7 @@ Once $\phi$ becomes larger then $2 \pi$ we run into problems since we won't be a
 
 ### From depth to Euclidean coordinates
 
-We now know how to detect and capture and measure the distance to an object. However, we haven't discussed how to map the distance measure for a certain pixel value to real-world coordinates. Therefore, let's take a look at the pinhole camera model and come up with an equation that allows us to map image coordinates to real-world coordinates.
+We know how to detect and capture and measure the distance to an object. However, we haven't discussed how to map the distance measure for a certain pixel value to real-world coordinates. Therefore, let's take a look at the pinhole camera model and come up with an equation that allows us to map image coordinates to real-world coordinates.
 
 First, we need to know that every camera can be described by its intrinsic camera matrix. This matrix allows us to map between camera coordinates and pixel coordinates in the image frame.
 
